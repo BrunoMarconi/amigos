@@ -1,26 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+  --accent-gold: #d4af37;
+  --accent-soft: #c9a961;
+  --dark-bg: #1a1a1a;
+  --border-subtle: #2a2a2a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f0f0f;
+    --foreground: #f5f5f5;
   }
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lora', 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+heading, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.text-accent {
+  color: var(--accent-gold);
+}
+
+.border-accent {
+  border-color: var(--accent-gold);
+}
+
+/* Efecto de cristal */
+.glass-effect {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Animación de brillo sutil */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.15; }
+}
+
+.shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Gradiente dorado premium */
+.gradient-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a961 100%);
+}
+
+/* Selección con estilo */
+::selection {
+  background-color: #d4af37;
+  color: #0f0f0f;
 }

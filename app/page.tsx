@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function LuxuryRestaurantHero() {
   return (
     <main 
-      className="min-h-screen text-[#f5f5f5] selection:bg-[#c5a35d] selection:text-black font-light relative overflow-hidden"
+      className="min-h-screen text-[#f5f5f5] selection:bg-[#d4af37] selection:text-[#0f0f0f] font-light relative overflow-hidden"
       style={{
         backgroundImage: "url('/image.webp')",
         backgroundSize: 'cover',
@@ -25,21 +25,21 @@ export default function LuxuryRestaurantHero() {
         }}
       ></div>
 
-      {/* Overlay oscuro con gradiente lujo */}
-      <div className="absolute inset-0 z-5 bg-gradient-to-b from-black/40 via-black/60 to-black/70"></div>
+      {/* Overlay oscuro con gradiente lujo mejorado */}
+      <div className="absolute inset-0 z-5 bg-gradient-to-b from-black/35 via-black/55 to-black/75"></div>
 
-      {/* Efecto de luz superior sutil */}
-      <div className="absolute top-0 left-0 right-0 h-96 z-0 bg-gradient-to-b from-[#c5a35d]/5 via-transparent to-transparent pointer-events-none"></div>
+      {/* Efecto de luz superior premium */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] z-0 bg-gradient-to-b from-[#d4af37]/8 via-[#d4af37]/2 to-transparent pointer-events-none"></div>
 
       {/* Contenido Principal */}
-      <section className="relative flex flex-col items-center justify-center pt-40 px-6 z-10 min-h-screen">
+      <section className="relative flex flex-col items-center justify-center pt-48 px-6 z-10 min-h-screen">
         {/* Etiqueta superior */}
-        <div className="overflow-hidden mb-6">
+        <div className="overflow-hidden mb-8">
           <motion.span 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[9px] tracking-[0.8em] uppercase opacity-50 font-extralight"
+            transition={{ delay: 0.3, duration: 0.9 }}
+            className="text-[10px] tracking-[1em] uppercase opacity-60 font-light"
           >
             ✦ Excelencia Gastronómica ✦
           </motion.span>
@@ -49,31 +49,31 @@ export default function LuxuryRestaurantHero() {
         <motion.div 
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#c5a35d] to-transparent mb-8"
+          transition={{ delay: 0.5, duration: 1.2 }}
+          className="h-[1.5px] w-16 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-10"
         ></motion.div>
 
         {/* Título Principal */}
-        <div className="overflow-hidden mb-2">
+        <div className="overflow-hidden mb-3">
           <motion.h2 
-            initial={{ y: "100%", opacity: 0 }}
+            initial={{ y: "120%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-serif font-extralight text-center tracking-tighter leading-[0.9]"
+            transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-serif font-light text-center tracking-tight leading-[0.85]"
           >
-            El arte de
+            El Arte de
           </motion.h2>
         </div>
 
         {/* Palabra destacada */}
-        <div className="overflow-hidden mb-6">
+        <div className="overflow-hidden mb-8">
           <motion.span 
-            initial={{ y: "100%", opacity: 0 }}
+            initial={{ y: "120%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl italic font-extralight text-[#c5a35d] font-serif tracking-tight block"
+            transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="text-5xl md:text-7xl lg:text-8xl italic font-light text-[#d4af37] font-serif tracking-wide block"
           >
-            lo sublime
+            lo Sublime
           </motion.span>
         </div>
 
@@ -81,36 +81,36 @@ export default function LuxuryRestaurantHero() {
         <motion.div 
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#c5a35d] to-transparent my-8"
+          transition={{ delay: 0.8, duration: 1.2 }}
+          className="h-[1.5px] w-16 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent my-10"
         ></motion.div>
 
         {/* Descripción elegante */}
         <motion.p 
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="max-w-2xl text-center text-[10px] font-extralight tracking-[0.3em] text-neutral-400 uppercase leading-loose"
+          transition={{ delay: 1.1, duration: 1 }}
+          className="max-w-2xl text-center text-[11px] font-light tracking-[0.4em] text-neutral-300 uppercase leading-relaxed"
         >
-          Donde la materia prima se rinde ante la técnica. <br />
-          <span className="text-[#c5a35d] text-opacity-80">Una experiencia sensorial sin igual.</span>
+          Donde la materia prima se rinde ante la técnica.<br />
+          <span className="text-[#d4af37]/85">Una experiencia sensorial sin igual.</span>
         </motion.p>
 
-        {/* Scroll Indicator - Mejorado */}
+        {/* Scroll Indicator - Premium */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="mt-32 group cursor-pointer flex flex-col items-center"
+          transition={{ delay: 1.6, duration: 1 }}
+          className="mt-40 group cursor-pointer flex flex-col items-center"
         >
-          <span className="text-[7px] tracking-[0.6em] uppercase text-neutral-500 group-hover:text-[#c5a35d] transition-colors duration-500 mb-6">
-            Descubrir
+          <span className="text-[8px] tracking-[0.8em] uppercase text-neutral-400 group-hover:text-[#d4af37] transition-colors duration-700 mb-8 font-light">
+            DESCUBRIR
           </span>
-          <div className="relative h-24 w-[1px] bg-gradient-to-b from-[#c5a35d]/0 via-[#c5a35d]/50 to-[#c5a35d]/0 overflow-hidden">
+          <div className="relative h-28 w-[1.5px] bg-gradient-to-b from-[#d4af37]/0 via-[#d4af37]/60 to-[#d4af37]/0 overflow-hidden">
             <motion.div 
               animate={{ y: ["-100%", "100%"] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full h-1/3 bg-gradient-to-b from-transparent via-[#c5a35d] to-transparent"
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full h-1/4 bg-gradient-to-b from-transparent via-[#d4af37] to-transparent"
             />
           </div>
         </motion.div>

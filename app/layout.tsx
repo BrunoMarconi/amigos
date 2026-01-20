@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Menu from "./menu";
 import LuxuryHeader from "./header";
+import LocationSection from "./ubi";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <LuxuryHeader />
         {children}
         <Menu />
+        <LocationSection />
       </body>
     </html>
   );
