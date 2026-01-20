@@ -33,7 +33,7 @@ export default function RootLayout({
         <LuxuryHeader />
         {children}
         <Menu />
-        <LocationSection />
+        
       </body>
     </html>
   );
