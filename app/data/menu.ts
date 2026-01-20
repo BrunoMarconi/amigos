@@ -38,7 +38,7 @@ export const MENU_DATA: Burger[] = [
     nombre: "Nachos Distrito",
     precio: "8.90€",
     descripcion: "Nachos caseros con guacamole y carne picada.",
-    imagen: "/entrante1.webp",
+    imagen: "/comida1.webp",
     categoria: 'entrantes'
   },
   {
