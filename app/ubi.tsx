@@ -60,15 +60,7 @@ export default function LuxuryMapSection() {
           {/* Overlay sutilmente oscuro */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-          {/* Pin simple */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="relative">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#d4af37]/60 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-2 h-2 bg-[#d4af37] rounded-full" />
-              </div>
-            </div>
-          </div>
+          
 
           {/* Etiqueta simple */}
           <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8">
