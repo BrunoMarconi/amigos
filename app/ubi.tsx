@@ -1,88 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function LuxuryMapSection() {
+  const [showMap, setShowMap] = useState(false);
+
   return (
-    <section className="relative bg-gradient-to-b from-[#050505] to-[#0f0f0f] py-16 md:py-32 px-4 md:px-6 overflow-hidden border-t border-white/[0.02]">
+    <section className="relative bg-[#050505] py-24 md:py-40 px-6 overflow-hidden border-t border-white/[0.02]">
       <div className="max-w-7xl mx-auto">
         
-        {/* Encabezado de Sección */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6 md:gap-8">
+        {/* Encabezado con carga diferida */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-full md:max-w-2xl"
+            className="max-w-2xl"
           >
-            <span className="text-[10px] md:text-[11px] uppercase tracking-[0.8em] md:tracking-[1em] text-[#d4af37] mb-3 md:mb-4 block font-light">
+            <span className="text-[11px] uppercase tracking-[1em] text-[#d4af37] mb-6 block font-light">
               ✦ Localización ✦
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-light tracking-tight leading-none text-white mb-2">
-              Privacidad
+            <h2 className="text-5xl md:text-7xl font-serif font-light tracking-tight text-white mb-2">
+              Privacidad <span className="italic font-extralight text-[#d4af37]/70 italic">& Distinción</span>
             </h2>
-            <p className="text-lg sm:text-xl md:text-3xl font-serif font-light italic text-[#d4af37]/70 tracking-wide">
-              & Distinción
-            </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-left md:text-right w-full md:w-auto"
-          >
-            <p className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] md:tracking-[0.5em] text-zinc-400 leading-relaxed font-light">
+          <div className="text-left md:text-right">
+            <p className="text-[10px] uppercase tracking-[0.5em] text-zinc-500 leading-relaxed font-light">
               Calle de la Exclusividad, 42<br />
-              <span className="text-[#d4af37]/70">Salamanca District, Madrid</span>
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Mapa Simplificado */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="relative h-64 sm:h-80 md:h-[450px] w-full rounded-sm overflow-hidden border border-[#d4af37]/20 bg-zinc-950"
-        >
-          {/* Mapa sin filtros pesados */}
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1994276106684!2d-3.6847!3d40.426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422899dc90366b%3A0xa190e3860538f71b!2sC.%20de%20Jorge%20Juan%2C%20Madrid!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
-            className="w-full h-full border-0"
-            style={{ filter: "grayscale(1) brightness(0.7)" }}
-            loading="lazy"
-          />
-
-          {/* Overlay sutilmente oscuro */}
-          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-
-          
-
-          {/* Etiqueta simple */}
-          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8">
-            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#d4af37] font-light">
-              ✦ AETHER ATELIER ✦
+              <span className="text-[#d4af37]/50 italic">Salamanca District, Madrid</span>
             </p>
           </div>
-        </motion.div>
-
-        {/* CTA Button */}
-        <div className="mt-8 md:mt-12 flex justify-center">
-          <motion.a 
-            whileHover={{ letterSpacing: "0.6em" }}
-            href="https://maps.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] sm:tracking-[0.5em] text-zinc-400 hover:text-[#d4af37] transition-colors duration-300 border-b border-zinc-700 hover:border-[#d4af37] pb-2 font-light"
-          >
-            ✦ Ver Ubicación ✦
-          </motion.a>
         </div>
 
+        {/* CONTENEDOR DE MAPA OPTIMIZADO */}
+        <div className="relative h-[400px] md:h-[550px] w-full rounded-sm overflow-hidden border border-[#d4af37]/10 bg-zinc-950 group">
+          
+          {!showMap ? (
+            /* VISTA PREVIA: Una imagen estática (puedes usar una captura elegante de tu mapa) */
+            <div className="relative w-full h-full cursor-pointer overflow-hidden" onClick={() => setShowMap(true)}>
+              <Image 
+                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2000" // Sustituye por una captura de tu mapa en B/N
+                alt="Ubicación AETHER"
+                fill
+                className="object-cover grayscale brightness-[0.4] transition-transform duration-[3s] group-hover:scale-105"
+              />
+              
+              {/* Botón de activación refinado */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] transition-all group-hover:backdrop-blur-none">
+                <div className="w-12 h-12 rounded-full border border-[#d4af37]/30 flex items-center justify-center mb-4">
+                  <div className="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse" />
+                </div>
+                <span className="text-[9px] uppercase tracking-[0.6em] text-white opacity-60 group-hover:opacity-100 transition-opacity">
+                  Activar Mapa Interactivo
+                </span>
+              </div>
+            </div>
+          ) : (
+            /* EL MAPA REAL: Solo se carga tras hacer clic */
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=..." // TU URL DE EMBED AQUÍ
+              className="w-full h-full border-0"
+              style={{ filter: "grayscale(1) invert(0.9) brightness(0.8)" }}
+              allowFullScreen
+            />
+          )}
+
+          {/* Gradiente de profundidad fijo */}
+          <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.6)]" />
+        </div>
+
+        {/* Footer */}
+        <div className="mt-12 flex justify-center">
+          <a 
+            href="https://maps.google.com" 
+            target="_blank" 
+            className="text-[10px] uppercase tracking-[0.5em] text-zinc-500 hover:text-[#d4af37] border-b border-zinc-800 transition-all pb-2"
+          >
+            Abrir en Google Maps ✦
+          </a>
+        </div>
       </div>
     </section>
   );
