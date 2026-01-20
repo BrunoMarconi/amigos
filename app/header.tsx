@@ -51,10 +51,30 @@ export default function LuxuryHeader() {
           </span>
         </motion.div>
 
+        {/* Menú Desktop */}
+        <nav className="hidden md:flex items-center gap-8">
+          {menuItems.map((item) => (
+            <motion.a
+              key={item.name}
+              href={`#${item.name.toLowerCase()}`}
+              className="group relative flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-[9px] tracking-[0.5em] text-[#c5a35d] font-light">
+                {item.label}
+              </span>
+              <span className="text-sm tracking-widest font-serif italic text-white transition-all duration-700 group-hover:text-[#c5a35d]">
+                {item.name}
+              </span>
+              <div className="w-0 h-[1px] bg-[#c5a35d]/30 group-hover:w-4 transition-all duration-700 absolute bottom-0 left-full ml-2" />
+            </motion.a>
+          ))}
+        </nav>
+
         {/* Botón Hamburguesa Estilo Galería */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-[150] group p-2 focus:outline-none"
+          className="relative z-[150] group p-2 focus:outline-none md:hidden"
         >
           <div className="flex flex-col gap-2 items-end">
             <motion.div 
