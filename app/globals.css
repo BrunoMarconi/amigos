@@ -105,3 +105,12 @@ heading, h1, h2, h3, h4, h5, h6 {
   background-color: #d4af37;
   color: #0f0f0f;
 }
+
+h2, span {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-display: swap; /* Obligatorio para PageSpeed */
+}
