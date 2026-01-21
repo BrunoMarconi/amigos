@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
@@ -9,6 +10,10 @@
   --dark-bg: #1a1a1a;
   --border-subtle: #2a2a2a;
   color-scheme: dark;
+}
+
+@font-face {
+  font-display: swap; /* Obligatorio para PageSpeed */
 }
 
 @theme inline {
@@ -111,6 +116,3 @@ h2, span {
   -webkit-font-smoothing: antialiased;
 }
 
-@font-face {
-  font-display: swap; /* Obligatorio para PageSpeed */
-}

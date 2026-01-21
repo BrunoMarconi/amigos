@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Image from "next/image"; // Importante para la optimización automática
+import Image from "next/image";
 import HeroClient from "./hero-client";
 
 export const metadata: Metadata = {
@@ -14,35 +14,46 @@ export const metadata: Metadata = {
 
 export default function LuxuryRestaurantHero() {
   return (
-    <main className="min-h-screen text-[#f5f5f5] selection:bg-[#d4af37] selection:text-[#0f0f0f] font-light relative overflow-hidden bg-black">
+    <main className="min-h-[100dvh] text-[#f5f5f5] selection:bg-[#d4af37] selection:text-[#0f0f0f] font-light relative overflow-hidden bg-[#050505]">
       
-      {/* Imagen de fondo optimizada con Next.js Image */}
+      {/* Fondo optimizado */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/image.webp" // Usa la imagen de mejor calidad aquí
-          alt="Restaurante de lujo"
-          fill // Ocupa todo el contenedor absolute
-          priority // Fuerza la carga inmediata (Clave para el 95+)
-          quality={85} // Balance perfecto entre lujo y peso
-          className="object-cover"
+          src="/image.webp"
+          alt="Experiencia Gastronómica"
+          fill
+          priority
+          quality={95}
+          className="object-cover object-center" 
           sizes="100vw"
-          // fetchpriority="high" // Solo si tu versión de Next lo soporta directamente en el tag
         />
       </div>
 
-      {/* Overlay oscuro con gradiente lujo mejorado */}
-      <div className="absolute inset-0 z-[5] bg-gradient-to-b from-black/35 via-black/55 to-black/75"></div>
+      {/* Capas de atmósfera */}
+      <div className="absolute inset-0 z-[5] bg-gradient-to-b from-black/50 via-black/30 to-black/80"></div>
+      
+      {/* Resplandor superior sutil */}
+      <div className="absolute top-0 left-0 right-0 h-[60vh] z-[6] bg-[radial-gradient(50%_50%_at_50%_0%,_rgba(212,175,55,0.08)_0%,_transparent_100%)] pointer-events-none"></div>
 
-      {/* Efecto de luz superior premium */}
-      <div className="absolute top-0 left-0 right-0 h-[500px] z-[6] bg-gradient-to-b from-[#d4af37]/8 via-[#d4af37]/2 to-transparent pointer-events-none"></div>
-
-      {/* Contenido Principal */}
-      <section className="relative flex flex-col items-center justify-center pt-48 px-6 z-10 min-h-screen">
-        <HeroClient />
+      {/* Contenido: Elevación balanceada */}
+      <section className="relative z-10 flex flex-col items-center px-6 
+        /* Elevación sutil: ni muy arriba, ni centrado */
+        justify-start pt-[25vh] md:pt-[28vh] 
+        min-h-[100dvh] text-center">
+        
+        <div className="w-full max-w-4xl mx-auto">
+          <HeroClient />
+        </div>
+        
       </section>
 
-      {/* Viñeta para profundidad */}
-      <div className="fixed inset-0 z-[1] bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+      {/* Indicador de continuidad minimalista */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-40">
+        <div className="w-[1px] h-10 bg-gradient-to-b from-[#d4af37] to-transparent"></div>
+      </div>
+
+      {/* Profundidad de campo */}
+      <div className="fixed inset-0 z-[1] bg-gradient-to-tr from-black/40 via-transparent to-black/20 pointer-events-none" />
     </main>
   );
 }

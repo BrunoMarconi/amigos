@@ -4,9 +4,11 @@ import "./globals.css";
 import Menu from "./menu";
 import LuxuryHeader from "./header";
 import LocationSection from "./ubi";
+import LuxuryFooter from "./components/footer";
+import {StickyConcierge}  from "./botoncito";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-geist-sans",  
   subsets: ["latin"],
   display: "swap",
 });
@@ -39,9 +41,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LuxuryHeader />
+        <StickyConcierge />
         {children}
         <Menu />
-        
+        <LocationSection />
+        <LuxuryFooter />
       </body>
     </html>
   );

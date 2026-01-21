@@ -1,116 +1,99 @@
-// components/Menu.tsx
-"use client"
-import { motion, AnimatePresence } from "framer-motion"
-import CardMenu from "./components/MenuCard"
-import { MENU_DATA } from "./data/menu"
-import { useState } from "react"
+"use client";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import CardMenu from "./components/MenuCard";
+import { MENU_DATA } from "./data/menu";
+import { useState, useMemo } from "react";
 
 export default function Menu() {
   const [categoriaActiva, setCategoriaActiva] = useState('entrantes');
-  const productosFiltrados = MENU_DATA.filter(item => item.categoria === categoriaActiva);
+  
+  const productosFiltrados = useMemo(() => 
+    MENU_DATA.filter(item => item.categoria === categoriaActiva),
+    [categoriaActiva]
+  );
 
   const categorias = [
-    { id: 'entrantes', label: 'Entrantes' },
-    { id: 'burgers', label: 'Burgers' },
-    { id: 'ensaladas', label: 'Ensaladas' },
-    { id: 'bebidas', label: 'Bebidas' }
+    { id: 'entrantes', label: 'Entrantes', desc: 'El inicio del viaje' },
+    { id: 'burgers', label: 'Burgers', desc: 'Materia prima noble' },
+    { id: 'ensaladas', label: 'Huerta', desc: 'Frescura orgánica' },
+    { id: 'bebidas', label: 'Bodega', desc: 'Elíxires seleccionados' }
   ];
 
   return (
-    <section className="relative min-h-screen bg-[#050505] text-[#f4f4f4] py-32 overflow-hidden">
-      {/* Fondo decorativo sutil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#c5a35d]/2 to-transparent pointer-events-none" />
+    <section id="menu" className="relative min-h-screen bg-[#050505] text-[#f4f4f4] py-32 lg:py-48 overflow-hidden">
+      {/* Luces de ambiente sutiles */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#c5a35d]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#c5a35d]/3 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Encabezado de Lujo */}
-        <header className="mb-32 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
-          >
-            <span className="text-[9px] uppercase tracking-[0.8em] text-[#c5a35d] block mb-4">
-              ✦ Since 2024 ✦
-            </span>
-          </motion.div>
-
-          {/* Línea decorativa superior */}
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c5a35d] to-transparent mx-auto mb-8"
-          />
-
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-extralight tracking-tighter mb-4"
-          >
-            Nuestra <span className="italic text-[#c5a35d]">Selección</span>
-          </motion.h2>
-
-          {/* Línea decorativa inferior */}
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c5a35d] to-transparent mx-auto mt-8"
-          />
-
-          <motion.p 
+        <header className="mb-24 text-center">
+          <motion.span 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-[10px] tracking-[0.4em] text-neutral-400 uppercase mt-8"
+            className="text-[10px] uppercase tracking-[1em] text-[#c5a35d] block mb-8 font-medium"
           >
-            Exclusiva selección de platillos refinados
-          </motion.p>
+            ✦ Menú Degustación ✦
+          </motion.span>
+
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-8xl font-serif font-extralight tracking-tight text-white/90"
+          >
+            La <span className="italic text-[#c5a35d]">Colección</span>
+          </motion.h2>
+          
+          <div className="mt-10 flex flex-col items-center">
+            <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#c5a35d]/50 to-transparent" />
+            <p className="mt-8 text-[11px] tracking-[0.5em] text-zinc-500 uppercase max-w-xs leading-relaxed font-light">
+              Donde cada ingrediente cuenta una historia de excelencia.
+            </p>
+          </div>
         </header>
 
-        {/* Navegación Refinada */}
-        <nav className="flex justify-center gap-8 md:gap-16 pb-20 overflow-x-auto no-scrollbar">
-          {categorias.map((cat, idx) => (
-            <motion.button 
-              key={cat.id}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              onClick={() => setCategoriaActiva(cat.id)}
-              className={`relative py-3 text-[10px] uppercase tracking-[0.4em] transition-all duration-500 whitespace-nowrap ${
-                categoriaActiva === cat.id 
-                  ? "text-[#c5a35d]" 
-                  : "text-neutral-500 hover:text-neutral-300"
-              }`}
-            >
-              {cat.label}
-              {categoriaActiva === cat.id && (
-                <motion.div 
-                  layoutId="underline" 
-                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-[2px] bg-gradient-to-r from-transparent via-[#c5a35d] to-transparent"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </motion.button>
-          ))}
+        {/* Navegación Estilo Concierge */}
+        <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 pb-24 border-b border-white/5">
+          <LayoutGroup id="nav">
+            {categorias.map((cat) => (
+              <button 
+                key={cat.id}
+                onClick={() => setCategoriaActiva(cat.id)}
+                className="group relative flex flex-col items-center"
+              >
+                <span className={`text-[10px] uppercase tracking-[0.4em] transition-all duration-700 ${
+                  categoriaActiva === cat.id ? "text-[#c5a35d]" : "text-zinc-500 group-hover:text-zinc-300"
+                }`}>
+                  {cat.label}
+                </span>
+                
+                {categoriaActiva === cat.id && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute -bottom-4 w-1 h-1 bg-[#c5a35d] rotate-45"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </button>
+            ))}
+          </LayoutGroup>
         </nav>
 
-        {/* Grid de productos con espaciado lujo */}
+        {/* Grid de Productos Refinado */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 pt-24"
         >
           <AnimatePresence mode="popLayout">
-            {productosFiltrados.map((producto, idx) => (
+            {productosFiltrados.map((producto) => (
               <motion.div
                 key={producto.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                layout
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
               >
                 <CardMenu {...producto} />
               </motion.div>
@@ -119,5 +102,5 @@ export default function Menu() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
