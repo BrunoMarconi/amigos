@@ -63,7 +63,7 @@ export default function HeroClient() {
       <motion.p 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
+
         className="max-w-2xl text-center text-[10px] md:text-[11px] font-light tracking-[0.3em] md:tracking-[0.4em] text-neutral-300 uppercase leading-relaxed"
       >
         Donde la materia prima se rinde ante la técnica.<br />
